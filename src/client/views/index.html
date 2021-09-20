@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Travelling</title>
+    <link rel="icon" href="../images/plane-departure-solid.svg">
+</head>
+
+<body>
+
+    <header>
+
+    </header>
+
+    <main>
+
+    </main>
+
+    <footer>
+        <p>Udacity Front-End Nanodegree Capstone Project</p>
+    </footer>
+
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
+</body>
+
+</html>
