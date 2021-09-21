@@ -14,7 +14,6 @@ module.exports = {
     devServer: {
         port: process.env.PORT || 8082,
         setup(app) {
-            let articleData = {};
 
             /* Middleware*/
             //Here we are configuring express to use body-parser as middle-ware.
@@ -33,20 +32,6 @@ module.exports = {
             const api = {
                 key: process.env.API_KEY
             }
-
-            app.get('/apiKey', function(req, res) {
-                res.send(api);
-            })
-
-            app.post('/add', function(req, res) {
-                articleData = req.body;
-                console.log(`Returning article data. ${articleData.confidence}`)
-                res.end(JSON.stringify({ status: 200, message: "success", articleData: articleData }))
-            })
-
-            app.get('/data', function(req, res) {
-                res.send(articleData);
-            })
         }
     },
     module: {
