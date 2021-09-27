@@ -5,7 +5,9 @@ const express = require('express')
 const dotenv = require('dotenv')
 dotenv.config()
 
-const username = process.env.USERNAME
+const usernameObject = {
+    username: process.env.API_USERNAME
+}
 
 //  --MAKE SURE TO CHANGE--
 
