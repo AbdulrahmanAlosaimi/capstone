@@ -5,9 +5,7 @@ const express = require('express')
 const dotenv = require('dotenv')
 dotenv.config()
 
-const api = {
-    key: process.env.API_KEY
-}
+const username = process.env.USERNAME
 
 //  --MAKE SURE TO CHANGE--
 
@@ -35,4 +33,11 @@ app.get('/', function(req, res) {
 // designates what port the app will listen to for incoming requests
 app.listen(process.env.PORT || 8081, function() {
     console.log(`FEND Capstone app listening on port ${this.address().port}!`)
+})
+
+app.get('/geoNamesUsername', function(req, res) {
+    console.log('---')
+    console.log(username);
+    console.log('---')
+    return username;
 })

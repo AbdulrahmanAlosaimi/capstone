@@ -29,9 +29,16 @@ module.exports = {
             const dotenv = require('dotenv')
             dotenv.config()
 
-            const api = {
-                key: process.env.API_KEY
+            const usernameObject = {
+                username: process.env.API_USERNAME
             }
+
+            app.get('/geoNamesUsername', function(req, res) {
+                console.log('---')
+                console.log(usernameObject);
+                console.log('---')
+                return usernameObject;
+            })
         }
     },
     module: {
