@@ -3,40 +3,44 @@ import './styles/style.scss'
 import './styles/header.scss'
 import './styles/footer.scss'
 
-let cityName, apiObject, usernameObject;
+import { getGeoNamesObject } from './js/geoNamesAPI.js';
+
+let apiObject = {};
 
 document.addEventListener('DOMContentLoaded', async() => {
     const btn = document.getElementById('btn');
     btn.addEventListener('click', async() => {
-        cityName = document.getElementById('city').value;
-        console.log(cityName);
-        getGeoNamesObject();
+        await getGeoNamesObject();
+        console.log(await getRequest('/getCoordinates')); //fetches coordinates from server
     })
 })
 
-async function getGeoNamesObject() {
-    getRequest('/geoNamesUsername')
-        .then(async function(usernameObject) {
-            console.log(usernameObject);
-            let username = usernameObject.username;
-            console.log(username);
-            return await getRequest(`http://api.geonames.org/searchJSON?q=${cityName}&username=${username}`);
-        }).then(function(data) {
-            console.log(data);
-            return data;
-        });
-}
-
 async function getRequest(url) {
-    console.log(url);
     const response = await fetch(url);
     try {
         const data = await response.json();
-        console.log('getRequest');
-        console.log(data);
-        console.log('getRequest');
         return data;
     } catch (error) {
         console.log(error, 'error');
     }
 }
+
+async function postRequest(url, data) {
+    const response = await fetch(url, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+    try {
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.log(error, 'Error in index.js posting function');
+    }
+}
+
+export { getRequest }
+export { postRequest }

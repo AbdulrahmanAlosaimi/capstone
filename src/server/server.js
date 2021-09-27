@@ -38,8 +38,15 @@ app.listen(process.env.PORT || 8081, function() {
 })
 
 app.get('/geoNamesUsername', function(req, res) {
-    console.log('---')
-    console.log(username);
-    console.log('---')
-    return username;
+    res.send(usernameObject);
+})
+
+app.post('/addCoordinates', function(req, res) {
+    coordinatesObject = req.body;
+    res.end(JSON.stringify({ status: 200, message: "success", coordinatesObject: coordinatesObject }));
+})
+
+app.get('/getCoordinates', function(req, res) {
+    console.log('/getCoordinates');
+    res.send(coordinatesObject);
 })

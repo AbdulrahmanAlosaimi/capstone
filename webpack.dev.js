@@ -14,6 +14,8 @@ module.exports = {
     devServer: {
         port: process.env.PORT || 8082,
         setup(app) {
+            let coordinatesObject = {};
+
 
             /* Middleware*/
             //Here we are configuring express to use body-parser as middle-ware.
@@ -34,10 +36,17 @@ module.exports = {
             }
 
             app.get('/geoNamesUsername', function(req, res) {
-                console.log('---')
-                console.log(usernameObject);
-                console.log('---')
-                return usernameObject;
+                res.send(usernameObject);
+            })
+
+            app.post('/addCoordinates', function(req, res) {
+                coordinatesObject = req.body;
+                res.end(JSON.stringify({ status: 200, message: "success", coordinatesObject: coordinatesObject }));
+            })
+
+            app.get('/getCoordinates', function(req, res) {
+                console.log('/getCoordinates');
+                res.send(coordinatesObject);
             })
         }
     },
