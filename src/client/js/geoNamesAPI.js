@@ -11,6 +11,8 @@ async function getGeoNamesObject() { // POSTs coordinates to server
             let username = usernameObject.username;
             geoNamesObject = await getRequest(`http://api.geonames.org/searchJSON?q=${cityName}&maxRows=1&username=${username}`);
             coordinatesObject = {
+                countryName: geoNamesObject.geonames[0].countryName,
+                cityName: cityName,
                 lng: geoNamesObject.geonames[0].lng,
                 lat: geoNamesObject.geonames[0].lat
             };
