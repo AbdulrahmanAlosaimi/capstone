@@ -1,7 +1,7 @@
 var path = require('path')
 const express = require('express')
 
-// Environment Variables  --MAKE SURE TO CHANGE--
+// Environment Variables
 const dotenv = require('dotenv')
 dotenv.config()
 
@@ -9,7 +9,12 @@ const usernameObject = {
     username: process.env.API_USERNAME
 }
 
-//  --MAKE SURE TO CHANGE--
+const apiKeyObject = {
+    apiKey: process.env.API_KEY
+}
+
+let coordinatesObject = {},
+    weatherbitObject = {};
 
 const app = express()
 
@@ -37,6 +42,7 @@ app.listen(process.env.PORT || 8081, function() {
     console.log(`FEND Capstone app listening on port ${this.address().port}!`)
 })
 
+
 app.get('/geoNamesUsername', function(req, res) {
     res.send(usernameObject);
 })
@@ -49,4 +55,13 @@ app.post('/addCoordinates', function(req, res) {
 app.get('/getCoordinates', function(req, res) {
     console.log('/getCoordinates');
     res.send(coordinatesObject);
+})
+
+app.post('/addWeatherbitObject', function(req, res) {
+    weatherbitObject = req.body;
+    res.end(JSON.stringify({ status: 200, message: "success", weatherbitObject: weatherbitObject }));
+})
+
+app.get('/getWeatherbitObject', function(req, res) {
+    res.send(weatherbitObject);
 })

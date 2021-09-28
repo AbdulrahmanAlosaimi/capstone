@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', async() => {
     const btn = document.getElementById('btn');
     btn.addEventListener('click', async() => {
         await getGeoNamesObject();
-        console.log(await getRequest('/getCoordinates')); //fetches coordinates from server
     })
 })
 

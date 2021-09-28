@@ -14,7 +14,8 @@ module.exports = {
     devServer: {
         port: process.env.PORT || 8082,
         setup(app) {
-            let coordinatesObject = {};
+            let coordinatesObject = {},
+                weatherbitObject = {};
 
 
             /* Middleware*/
@@ -35,8 +36,16 @@ module.exports = {
                 username: process.env.API_USERNAME
             }
 
+            const apiKeyObject = {
+                apiKey: process.env.API_KEY
+            }
+
             app.get('/geoNamesUsername', function(req, res) {
                 res.send(usernameObject);
+            })
+
+            app.get('/weatherbitKey', function(req, res) {
+                res.send(apiKeyObject);
             })
 
             app.post('/addCoordinates', function(req, res) {
@@ -45,8 +54,16 @@ module.exports = {
             })
 
             app.get('/getCoordinates', function(req, res) {
-                console.log('/getCoordinates');
                 res.send(coordinatesObject);
+            })
+
+            app.post('/addWeatherbitObject', function(req, res) {
+                weatherbitObject = req.body;
+                res.end(JSON.stringify({ status: 200, message: "success", weatherbitObject: weatherbitObject }));
+            })
+
+            app.get('/getWeatherbitObject', function(req, res) {
+                res.send(weatherbitObject);
             })
         }
     },

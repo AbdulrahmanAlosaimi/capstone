@@ -1,5 +1,6 @@
 import { getRequest } from '../index.js';
 import { postRequest } from '../index.js';
+import { getWeatherbitObject } from './weatherbitAPI.js';
 
 let cityName, geoNamesObject, coordinatesObject;
 
@@ -17,6 +18,8 @@ async function getGeoNamesObject() { // POSTs coordinates to server
         }).then(async(coordinatesObject) => {
             console.log(coordinatesObject);
             return await postRequest('/addCoordinates', coordinatesObject);
+        }).then(async() => {
+            await getWeatherbitObject();
         });
 }
 
