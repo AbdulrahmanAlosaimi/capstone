@@ -16,9 +16,9 @@ async function getGeoNamesObject() { // POSTs coordinates to server
                 lng: geoNamesObject.geonames[0].lng,
                 lat: geoNamesObject.geonames[0].lat
             };
+            console.log(coordinatesObject);
             return coordinatesObject;
         }).then(async(coordinatesObject) => {
-            console.log(coordinatesObject);
             return await postRequest('/addCoordinates', coordinatesObject);
         }).then(async() => {
             await getWeatherbitObject();

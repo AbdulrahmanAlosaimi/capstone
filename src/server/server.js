@@ -5,12 +5,16 @@ const express = require('express')
 const dotenv = require('dotenv')
 dotenv.config()
 
-const usernameObject = {
-    username: process.env.API_USERNAME
+const geoNamesUsernameObject = {
+    username: process.env.geoNamesAPI_USERNAME
 }
 
-const apiKeyObject = {
-    apiKey: process.env.API_KEY
+const weatherbitApiKeyObject = {
+    apiKey: process.env.weatherbitAPI_KEY
+}
+
+const pixabayApiKeyObject = {
+    apiKey: process.env.pixabayAPI_KEY
 }
 
 let coordinatesObject = {},
@@ -43,8 +47,17 @@ app.listen(process.env.PORT || 8081, function() {
 })
 
 
+
 app.get('/geoNamesUsername', function(req, res) {
-    res.send(usernameObject);
+    res.send(geoNamesUsernameObject);
+})
+
+app.get('/weatherbitKey', function(req, res) {
+    res.send(weatherbitApiKeyObject);
+})
+
+app.get('/pixabayKey', function(req, res) {
+    res.send(pixabayApiKeyObject);
 })
 
 app.post('/addCoordinates', function(req, res) {
@@ -64,4 +77,13 @@ app.post('/addWeatherbitObject', function(req, res) {
 
 app.get('/getWeatherbitObject', function(req, res) {
     res.send(weatherbitObject);
+})
+
+app.post('/addPixabayObject', function(req, res) {
+    pixabayObject = req.body;
+    res.end(JSON.stringify({ status: 200, message: "success", pixabayObject: pixabayObject }));
+})
+
+app.get('/getPixabayObject', function(req, res) {
+    res.send(pixabayObject);
 })
