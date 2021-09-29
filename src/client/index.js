@@ -8,6 +8,13 @@ import { getGeoNamesObject } from './js/geoNamesAPI.js';
 let apiObject = {};
 
 document.addEventListener('DOMContentLoaded', async() => {
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = `${yyyy}-${mm}-${dd}`;
+    document.getElementById('departure').setAttribute('min', today);
     const btn = document.getElementById('btn');
     btn.addEventListener('click', async() => {
         await getGeoNamesObject();
