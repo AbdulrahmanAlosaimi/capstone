@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', async() => {
     departureDateInput.setAttribute('min', today);
     let twoMonth = (todayDate.add(2, 'months').format('YYYY-MM-DD'));
     departureDateInput.setAttribute('max', twoMonth);
-    console.log(departureDateInput.max);
     let cityInput = document.getElementById('city')
     const btn = document.getElementById('btn');
     btn.addEventListener('click', async() => {
@@ -32,10 +31,8 @@ document.addEventListener('DOMContentLoaded', async() => {
             if (departureDate._isValid == false) {
                 alert('Please enter a valid date');
             } else {
-                console.log(todayDate.from(departureDate));
-                console.log(departureDate);
-                console.log(todayDate);
-                console.log(todayDate.diff(departureDate, 'days'));
+                let remainingDays = calculateRemainingDays(new Date(today), new Date(departureDateInput.value));
+                console.log(remainingDays);
                 await getGeoNamesObject();
             }
         }
@@ -67,6 +64,14 @@ async function postRequest(url, data) {
     } catch (error) {
         console.log(error, 'Error in index.js posting function');
     }
+}
+
+
+function calculateRemainingDays(today, departure) {
+    let ms = departure.getTime() - today.getTime();
+    let days = Math.floor(ms / (24 * 60 * 60 * 1000));
+    let daysms = ms % (24 * 60 * 60 * 1000);
+    return `${days}.${daysms} days`;
 }
 
 export { getRequest }
