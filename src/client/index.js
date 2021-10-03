@@ -4,6 +4,7 @@ import './styles/header.scss'
 import './styles/footer.scss'
 
 import { getGeoNamesObject } from './js/geoNamesAPI.js';
+import moment from 'moment';
 
 let apiObject = {};
 
@@ -14,10 +15,30 @@ document.addEventListener('DOMContentLoaded', async() => {
     var yyyy = today.getFullYear();
 
     today = `${yyyy}-${mm}-${dd}`;
-    document.getElementById('departure').setAttribute('min', today);
+    let todayDate = moment(today);
+    let departureDateInput = document.getElementById('departure');
+    departureDateInput.setAttribute('min', today);
+    let twoMonth = (todayDate.add(2, 'months').format('YYYY-MM-DD'));
+    departureDateInput.setAttribute('max', twoMonth);
+    console.log(departureDateInput.max);
+    let cityInput = document.getElementById('city')
     const btn = document.getElementById('btn');
     btn.addEventListener('click', async() => {
-        await getGeoNamesObject();
+        let cityName = cityInput.value;
+        if (cityName == '') {
+            alert('Please enter a city name');
+        } else {
+            let departureDate = moment(departureDateInput.value); //TODO: Fix moment js and date subtraction
+            if (departureDate._isValid == false) {
+                alert('Please enter a valid date');
+            } else {
+                console.log(todayDate.from(departureDate));
+                console.log(departureDate);
+                console.log(todayDate);
+                console.log(todayDate.diff(departureDate, 'days'));
+                await getGeoNamesObject();
+            }
+        }
     })
 })
 

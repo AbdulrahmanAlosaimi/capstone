@@ -10,18 +10,34 @@ async function getGeoNamesObject() { // POSTs coordinates to server
         .then(async function(usernameObject) {
             let username = usernameObject.username;
             geoNamesObject = await getRequest(`http://api.geonames.org/searchJSON?q=${cityName}&maxRows=1&username=${username}`);
-            coordinatesObject = {
-                countryName: geoNamesObject.geonames[0].countryName,
-                cityName: cityName,
-                lng: geoNamesObject.geonames[0].lng,
-                lat: geoNamesObject.geonames[0].lat
-            };
-            console.log(coordinatesObject);
-            return coordinatesObject;
+            if (geoNamesObject.geonames.length == 0) {
+                alert('Please enter a valid city name')
+                document.getElementById('city').value = '';
+                return {
+                    cityName: "Not found"
+                };
+            } else {
+                coordinatesObject = {
+                    countryName: geoNamesObject.geonames[0].countryName,
+                    cityName: cityName,
+                    lng: geoNamesObject.geonames[0].lng,
+                    lat: geoNamesObject.geonames[0].lat
+                };
+                console.log(coordinatesObject);
+                return coordinatesObject;
+            }
         }).then(async(coordinatesObject) => {
-            return await postRequest('/addCoordinates', coordinatesObject);
-        }).then(async() => {
-            await getWeatherbitObject();
+            if (coordinatesObject.cityName == "Not found") {
+                return coordinatesObject;
+            } else {
+                return await postRequest('/addCoordinates', coordinatesObject);
+            }
+        }).then(async(coordinatesObject) => {
+            if (coordinatesObject.cityName == "Not found") {
+                return coordinatesObject;
+            } else {
+                await getWeatherbitObject();
+            }
         });
 }
 
