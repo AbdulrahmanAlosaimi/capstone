@@ -1,19 +1,14 @@
-# WORK IN PROGRESS
-# Article Evaluation Project
+# Travelling Application
 
->This project uses Natural Language Processing through [MeaningCloud Sentiment Analysis API](https://learn.meaningcloud.com/developer/sentiment-analysis/2.1/doc) to evaluate an article and showcase different attributes, like:
-- Agreement
-- Confidence percentage
-- Irony
-- Subjectivity
+>This project aims to use multiple APIs [Geonames API](http://www.geonames.org/export/web-services.html), [Weatherbit API](https://www.weatherbit.io/api/weather-current), and [Pixabay API](https://pixabay.com/api/docs/) in order to gather enough information about a user's destination and show them.
 
 
 ## The Goal of This Project
->This project helps practicing and perfecting use of several things, like:
-- Webpack and it's plugins and loaders
-- Sass styling
-- Service Workers
-- Web APIs
+>This project is the capstone, it contains all previous skills learned through the nanodegree such as:
+- CSS, Website Layout, Website components
+- JS & The DOM
+- Web APIs and Asynchronous
+- Build Tools and Single Page Web Apps
 
 ## Contribution
 This project was created solely by Abdulrahman Alosaimi for educational purposes.
