@@ -4,14 +4,14 @@
 
 
 ## The Goal of This Project
->This project is the capstone, it contains all previous skills learned through the nanodegree such as:
+This project is the capstone, it contains all previous skills learned through the nanodegree such as:
 - CSS, Website Layout, Website components
 - JS & The DOM
 - Web APIs and Asynchronous
 - Build Tools and Single Page Web Apps
 
 ## Suggestions to stand out
->I have added the following suggestions:
+I have added the following suggestions:
 - "Incorporate icons into forecast."
 - "Pull in an image for the country from Pixabay API when the entered location brings up no results (good for obscure localities)."
 
