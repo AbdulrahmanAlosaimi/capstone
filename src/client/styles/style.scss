@@ -4,38 +4,60 @@ body {
     margin: 0;
 }
 
-main {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr);
-}
-
-.userInfoContainer {
-    grid-area: 1 / 1 / 2 / 2;
-    background-image: url("../media/airplane.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: hidden;
-    height: 500px;
+.app {
+    display: flex;
+    flex-direction: column;
 }
 
 h1 {
     padding-top: 2%;
     text-align: center;
     font-family: 'Quicksand', sans-serif;
+    font-size: 32px;
+}
+
+.userInfoContainer {
+    background-image: url("../media/airplane.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    height: 500px;
+    margin-bottom: 5vh;
 }
 
 .resultsContainer {
-    grid-area: 2 / 1 / 3 / 2;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr);
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
 }
 
 #destination-img {
-    grid-area: 1 / 1 / 2 / 2;
+    max-width: 60%;
 }
 
 #destination-info {
-    grid-area: 2 / 1 / 3 / 2;
+    display: flex;
+    flex-direction: column;
+    /*    justify-content: space-between; */
+    height: 90%;
+}
+
+.content {
+    margin: 2vh 0;
+    font-size: 1.2em;
+}
+
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+@media (max-width: 1000px) {
+    .resultsContainer {
+        display: flex;
+        flex-direction: column !important;
+    }
 }

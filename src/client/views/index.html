@@ -10,26 +10,30 @@
 <body>
 
     <main>
-        <div class="userInfoContainer">
-            <h1>Choose your destination!</h1>
-            <section class="userInfo">
-                <form class="" onSubmit="return false">
-                    <input id="city" type="text" value="" name="input" placeholder="Enter city name">
-                    <input type="date" name="departure-date" id="departure" onkeydown="return false">
-                    <button id="btn" type="button" value="search">Search</button>
-                </form>
-            </section>
-        </div>
+        <div class="app">
+            <div class="userInfoContainer">
+                <h1>Choose your destination!</h1>
+                <section class="userInfo">
+                    <form class="" onSubmit="return false">
+                        <input id="city" type="text" value="" name="input" placeholder="Enter city name">
+                        <input type="date" name="departure-date" id="departure" onkeydown="return false">
+                        <button id="btn" type="button" value="search">Search</button>
+                    </form>
+                </section>
+            </div>
 
-        <div class="resultsContainer">
-            <img src="https://pixabay.com/get/gdd5b30442eb6f2c46a25257f9126b7edb0a68aeda11a973843000fdf07b9c49134595485cc2d74794f04453ab5c5eef4_640.jpg" alt="" id="destination-img">
-            <section id="destination-info">
-                <h2 id="destination-name"></h2>
-                <p id="remaining-days"></p>
-                <img src="" alt="" id="weather-icon">
-                <h3 id="temperature"></h3>
-                <h3 id="weather-description"></h3>
-            </section>
+            <div class="resultsContainer">
+                <div id="destination-img">
+                    <img id="dest-img" src="" alt="">
+                </div>
+                <div id="destination-info">
+                    <h2 class="content" id="destination-name"></h2>
+                    <p class="content" id="remaining-days"></p>
+                    <img class="content" src="" alt="" id="weather-icon">
+                    <h3 class="content" id="temperature"></h3>
+                    <h3 class="content" id="weather-description"></h3>
+                </div>
+            </div>
         </div>
     </main>
 

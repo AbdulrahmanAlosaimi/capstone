@@ -1,3 +1,4 @@
+import './styles/resets.scss'
 import './styles/form.scss'
 import './styles/style.scss'
 import './styles/footer.scss'
@@ -28,12 +29,11 @@ document.addEventListener('DOMContentLoaded', async() => {
         if (cityName == '') {
             alert('Please enter a city name');
         } else {
-            let departureDate = moment(departureDateInput.value); //TODO: Fix moment js and date subtraction
+            let departureDate = moment(departureDateInput.value);
             if (departureDate._isValid == false) {
                 alert('Please enter a valid date');
             } else {
                 let remainingDays = calculateRemainingDays(new Date(today), new Date(departureDateInput.value));
-                console.log(remainingDays);
                 await getGeoNamesObject(remainingDays);
             }
         }
@@ -46,7 +46,7 @@ async function getRequest(url) {
         const data = await response.json();
         return data;
     } catch (error) {
-        console.log(error, 'error');
+        console.log(error, 'Error in index.js getting function');
     }
 }
 
