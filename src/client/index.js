@@ -1,10 +1,11 @@
 import './styles/form.scss'
 import './styles/style.scss'
-import './styles/header.scss'
 import './styles/footer.scss'
 
 import { getGeoNamesObject } from './js/geoNamesAPI.js';
 import moment from 'moment';
+
+import 'regenerator-runtime/runtime'
 
 let apiObject = {};
 
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async() => {
             } else {
                 let remainingDays = calculateRemainingDays(new Date(today), new Date(departureDateInput.value));
                 console.log(remainingDays);
-                await getGeoNamesObject();
+                await getGeoNamesObject(remainingDays);
             }
         }
     })
@@ -71,7 +72,7 @@ function calculateRemainingDays(today, departure) {
     let ms = departure.getTime() - today.getTime();
     let days = Math.floor(ms / (24 * 60 * 60 * 1000));
     let daysms = ms % (24 * 60 * 60 * 1000);
-    return `${days}.${daysms} days`;
+    return parseFloat(`${days}.${daysms}`);
 }
 
 export { getRequest }

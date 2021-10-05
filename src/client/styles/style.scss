@@ -1,14 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    height: 100%;
+    margin: 0;
 }
 
 main {
-    flex: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
 }
 
-section {
-    max-width: 800px;
-    margin: 50px auto;
+.userInfoContainer {
+    grid-area: 1 / 1 / 2 / 2;
+    background-image: url("../media/airplane.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    height: 500px;
+}
+
+h1 {
+    padding-top: 2%;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.resultsContainer {
+    grid-area: 2 / 1 / 3 / 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+}
+
+#destination-img {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+#destination-info {
+    grid-area: 2 / 1 / 3 / 2;
 }

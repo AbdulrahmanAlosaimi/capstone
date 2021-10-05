@@ -2,9 +2,11 @@ import { getRequest } from '../index.js';
 import { postRequest } from '../index.js';
 import { getWeatherbitObject } from './weatherbitAPI.js';
 
+import 'regenerator-runtime/runtime'
+
 let cityName, geoNamesObject, coordinatesObject;
 
-async function getGeoNamesObject() { // POSTs coordinates to server
+async function getGeoNamesObject(remainingDays) { // POSTs coordinates to server
     cityName = document.getElementById('city').value;
     getRequest('/geoNamesUsername')
         .then(async function(usernameObject) {
@@ -36,7 +38,7 @@ async function getGeoNamesObject() { // POSTs coordinates to server
             if (coordinatesObject.cityName == "Not found") {
                 return coordinatesObject;
             } else {
-                await getWeatherbitObject();
+                await getWeatherbitObject(remainingDays);
             }
         });
 }

@@ -66,7 +66,6 @@ app.post('/addCoordinates', function(req, res) {
 })
 
 app.get('/getCoordinates', function(req, res) {
-    console.log('/getCoordinates');
     res.send(coordinatesObject);
 })
 
@@ -87,3 +86,5 @@ app.post('/addPixabayObject', function(req, res) {
 app.get('/getPixabayObject', function(req, res) {
     res.send(pixabayObject);
 })
+
+module.exports = app;

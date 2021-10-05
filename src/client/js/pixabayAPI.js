@@ -1,6 +1,8 @@
 import { getRequest } from '../index.js';
 import { postRequest } from '../index.js';
 
+import 'regenerator-runtime/runtime'
+
 async function getPixabayObject() {
     await getRequest('/pixabayKey')
         .then(async(keyObject) => {
