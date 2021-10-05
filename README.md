@@ -10,5 +10,10 @@
 - Web APIs and Asynchronous
 - Build Tools and Single Page Web Apps
 
+## Suggestions to stand out
+>I have added the following suggestions:
+- "Incorporate icons into forecast."
+- "Pull in an image for the country from Pixabay API when the entered location brings up no results (good for obscure localities)."
+
 ## Contribution
 This project was created solely by Abdulrahman Alosaimi for educational purposes.
